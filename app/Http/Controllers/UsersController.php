@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -14,7 +15,24 @@ class UsersController extends Controller
      */
     public function index()
     {
-        dd(User::all());
+        // $user = new User();
+        // $user->name = "Dummy";
+        // $user->email = "dummy@dummy.com";
+        // $user->password = Hash::make("dummy@dummy.com");
+        // $user->save();
+
+        // dd(User::all());
+
+        $profile = ['website' => 'mywebsite1.com', 'code' => 'ABC1234'];
+
+        
+
+        $user = User::findOrFail(1);
+        $profile = $user->profile()->update($profile);
+
+        dd($user->profile->user);
+
+        // dd($user->profile);
     }
 
     /**
