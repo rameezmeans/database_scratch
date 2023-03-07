@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Post extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['website', 'code'];
+    protected $fillable = ['title', 'body'];
 
     public function user(){
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class,'user_id', 'id');
     }
 }

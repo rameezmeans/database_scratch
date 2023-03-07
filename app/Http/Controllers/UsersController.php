@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,17 +24,28 @@ class UsersController extends Controller
         // $user->save();
 
         // dd(User::all());
-
-        $profile = ['website' => 'mywebsite1.com', 'code' => 'ABC1234'];
-
-        
-
         $user = User::findOrFail(1);
-        $profile = $user->profile()->update($profile);
+        dd($user->oldestPost->user);
 
-        dd($user->profile->user);
+        // $user->posts()->create(
+        //     ['title' => 'Second One', 'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '],
+        // );
 
-        // dd($user->profile);
+        // dd($user->posts);
+
+        // $post = Post::findOrFail(1);
+        // dd($post->user);
+
+        // $profile = ['website' => 'mywebsite1.com', 'code' => 'ABC1234'];
+        // $user = User::findOrFail(1);
+        // $user->profile()->update($profile);
+
+        // dd($user->profile->user);
+
+        // $profile = Profile::findOrFail(1);
+        // dd($profile->user->profile);
+
+        // dd($user->with('profile')->first());
     }
 
     /**
